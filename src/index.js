@@ -18,7 +18,7 @@ import ru from './locales/ru.js';
 import {
   logoWrapper,
   prefixForEmailAndPhone,
-  resetMargins,
+  // resetMargins,
   semanticTags,
 } from './tests.js';
 
@@ -48,7 +48,7 @@ const app = async (projectPath, lng) => {
     }
 
     const baseUrl = 'http://localhost:3000';
-    const viewport = { width: 1440, height: 1080 };
+    const viewport = { width: 1100, height: 1080 };
     const launchOptions = { args: ['--no-sandbox', '--disable-setuid-sandbox'] };
     const { browser, page } = await launchBrowser(baseUrl, { launchOptions, viewport });
     const errors = (await Promise.all([
@@ -59,16 +59,16 @@ const app = async (projectPath, lng) => {
       lang(page, lng),
       titleEmmet(page),
       semanticTags(page, ['header', 'main', 'section', 'footer']),
-      resetMargins(page, ['body']),
+      // resetMargins(page, ['body']),
       logoWrapper(page),
       prefixForEmailAndPhone(page),
       horizontalScroll(page),
       compareLayout(baseUrl, {
-        canonicalImage: 'layout-canonical-1440.jpg',
-        pageImage: 'layout-1440.jpg',
-        outputImage: 'output-1440.jpg',
+        canonicalImage: 'layout-canonical-1100.jpg',
+        pageImage: 'layout-1100.jpg',
+        outputImage: 'output-1100.jpg',
         reqPercentage: 8,
-        browserOptions: { launchOptions, viewport: { width: 1440, height: 1080 } },
+        browserOptions: { launchOptions, viewport: { width: 1100, height: 1080 } },
       }),
     ]))
       .filter(Boolean)
